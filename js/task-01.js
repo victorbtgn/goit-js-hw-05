@@ -1,23 +1,5 @@
 console.log(`Task 1`);
 
-// const Account = function(obj) {
-//   const Account = Object.keys(obj);
-//   for (const key of Account) {
-//     if (key === "login") {
-//       this.login = obj[key];
-//       continue;
-//     }
-//     if (key === "email") {
-//       this.email = obj[key];
-//       continue;
-//     }
-//   }
-// };
-
-// Account.prototype.getInfo = function() {
-//   console.log(`Login: ${this.login}, Email: ${this.email}`);
-// };
-
 const Account = function(object) {
   this.login = object.login;
   this.email = object.email;

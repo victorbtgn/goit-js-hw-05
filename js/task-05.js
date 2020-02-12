@@ -8,7 +8,7 @@ class Car {
    */
 
   static getSpecs(car) {
-    return console.log(
+    console.log(
       `Max speed: ${car.maxSpeed}, Speed: ${car.speed}, Is on: ${car.isOn}, Distance: ${car.distance}, Price: ${car._price}`
     );
   }
@@ -41,7 +41,7 @@ class Car {
   }
 
   set price(price) {
-    return (this._price = price);
+    this._price = price;
   }
 
   /*
@@ -50,7 +50,7 @@ class Car {
    */
   turnOn() {
     console.log(`дрынь дынь скыдыш)`);
-    return (this.isOn = true);
+    this.isOn = true;
   }
 
   /*
@@ -62,7 +62,6 @@ class Car {
     console.log(`пых пых пшшшш)`);
     this.isOn = false;
     this.speed = 0;
-    return;
   }
 
   /*
@@ -71,8 +70,8 @@ class Car {
    * не больше чем значение свойства maxSpeed
    */
   accelerate(value) {
-    if (value <= this.maxSpeed) {
-      return (this.speed += value);
+    if (value + this.speed <= this.maxSpeed) {
+      this.speed += value;
     }
   }
 
@@ -81,8 +80,8 @@ class Car {
    * при условии что результирующая скорость не меньше нуля
    */
   decelerate(value) {
-    if (value > 0) {
-      return (this.speed -= value);
+    if (value + this.speed >= 0) {
+      this.speed -= value;
     }
   }
 
@@ -94,7 +93,6 @@ class Car {
     if (this.isOn) {
       const segmentDistance = hours * this.speed;
       this.distance += segmentDistance;
-      return this.distance;
     }
   }
 }
@@ -110,14 +108,13 @@ Car.getSpecs(mustang);
 
 mustang.decelerate(20);
 mustang.drive(1);
-console.log(mustang.speed);
-mustang.turnOff(); // так как движок уже заглох... 122 строка
-console.log(mustang.speed);
+
+Car.getSpecs(mustang);
+
+mustang.turnOff();
 
 Car.getSpecs(mustang);
 // maxSpeed: 200, speed: 30, isOn: false, distance: 130, price: 2000
-//                скорость не может быть 30, так как в 59 строке написано
-//                  'и сбрасывает текущую скорость в 0'. Че делать?)))
 
 console.log(mustang.price); // 2000
 mustang.price = 4000;

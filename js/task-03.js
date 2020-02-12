@@ -10,7 +10,7 @@ class Storage {
   }
 
   addItem(item) {
-    return this.items.push(item);
+    this.items.push(item);
   }
 
   removeItem(item) {
@@ -18,7 +18,6 @@ class Storage {
       const index = this.items.indexOf(item);
       this.items.splice(index, 1);
     }
-    return this.items;
   }
 }
 
